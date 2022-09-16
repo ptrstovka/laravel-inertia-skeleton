@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', fn() => \Inertia\Inertia::render('WelcomePage', [
+    'laravelVersion' => \Illuminate\Foundation\Application::VERSION,
+    'phpVersion' => PHP_VERSION,
+    'isAuthenticated' => \Illuminate\Support\Facades\Auth::check(),
+]));
